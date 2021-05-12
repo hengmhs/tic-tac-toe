@@ -1,10 +1,7 @@
-# Project: Library
+# Project: Tic-Tac-Toe
 
-The Odin Project assignment to create a Library app.
+The Odin Project assignment to create a Tic-Tac-Toe game.
 
 ## Learning Points:
 
-1. Overlay popup with dark background
-2. Adding and removing elements from the DOM
-3. Linking DOM elements to the Library array via data attributes
-4. CSS Transitions
+1. Modules
