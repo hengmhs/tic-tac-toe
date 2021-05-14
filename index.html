@@ -8,30 +8,35 @@
 <body>
 
 <div id="header">
-    <div>X: <input type='text' placeholder='Player 1'></div>
+    <div><label for='p1'>X: </label><input type='text' placeholder='Player 1' value='Player 1' id='p1'></div>
     <div id="msg"></div>
-    <div>O: <input type='text' placeholder='Player 2'></div>
+    <div><span>O: </span><input type='text' placeholder='Player 2' value='Player 2' id='p2'></div>
 </div>
 
+<div id='main'>
+    <table id="displayBoard">
+        <tr>
+            <td id="00"> </td>
+            <td id="01"> </td>
+            <td id="02"> </td>
+        </tr>
+        <tr>
+            <td id="10"> </td>
+            <td id="11"> </td>
+            <td id="12"> </td>
+        </tr>
+        <tr>
+            <td id="20"> </td>
+            <td id="21"> </td>
+            <td id="22"> </td>
+        </tr>
+    </table>
+</div>
 
-<table id="displayBoard">
-    <tr>
-        <td id="00">X</td>
-        <td id="01">O</td>
-        <td id="02">X</td>
-    </tr>
-    <tr>
-        <td id="10">O</td>
-        <td id="11">O</td>
-        <td id="12">O</td>
-    </tr>
-    <tr>
-        <td id="20">O</td>
-        <td id="21">O</td>
-        <td id="22">O</td>
-    </tr>
-</table>
-<button onclick="gameController.resetGame()">Reset</button>
+<div id='start'>
+    <button onclick="gameController.resetGame()" id='startbtn'>Start</button>
+</div>
+
 
 <script src="script.js"></script>
 </body>

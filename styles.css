@@ -1,16 +1,57 @@
+/* use html, body & height:100% to have the bg fill the whole screen */
+html, body {
+    margin: 0px;
+    background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input {
+    height: 100%;
+}
+
+span {
+    height: 100%;
+}
+
 table {
     border-collapse: collapse;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+    margin: 1em;
 }
 
 td {
     border: 1px solid #dddddd;
-    width: 5em;
-    height: 5em;
+    width: 2em;
+    height: 2em;
     padding: 0px;
     text-align: center;
+    transition: 0.3s;
+    font-size: 3em;
+    background: white;
+}
+
+td:hover {
+    transition: 0.3s;
+    background-color: lightblue;
 }
 
 #header {
     display: flex;
     justify-content: space-between;
+    background-color: lightskyblue;
+    padding: 1em;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+#main {
+    display: flex;
+    justify-content: space-around;
+    margin: 1em;
+}
+
+#start {
+    display: flex;
+    justify-content: space-around;
 }

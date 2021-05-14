@@ -4,14 +4,17 @@ const Player = (name, symbol) => {
 	return { name, symbol}
 }
 
-let p1 = Player('Player 1', 'X');
-let p2 = Player('Player 2', 'O');
-
 // gameController Module with IIFE -> Immediately Invoked Function Expression
 const gameController = (() => {
+	let p1 = Player(document.getElementById('p1').value, 'X');
+	//let p2 = Player(document.getElementById('p2').value, 'O');
+	console.log(p1);
 	let currentPlayer = p1;
+
 	const nextTurn = () => {
+		console.log(p1);
 		if(currentPlayer === p1){
+			console.log(p2);
 			currentPlayer = p2;
 		} else {
 			currentPlayer = p1;
@@ -25,7 +28,12 @@ const gameController = (() => {
 	}
 
 	const resetGame = () => {
+		document.getElementById('startbtn').innerHTML = 'Reset';
+		p1 = Player(document.getElementById('p1').value, 'X');
+		p2 = Player(document.getElementById('p2').value, 'O');
 		currentPlayer = p1;
+		console.log(p1);
+		console.log(p2);
 		gameBoard.resetBoard();
 		displayController.renderBoard();
 		displayController.updateGameStatus();
@@ -50,10 +58,6 @@ const gameController = (() => {
 
 const gameBoard = (() => {
 	let empty = ' ';
-	// assigning board to empty board will cause both variables to point at the same array
-	let emptyBoard = [[' ',' ',' '],
-			 	 	  [' ',' ',' '],
-			 	 	  [' ',' ',' ']]
 	let board = [[' ',' ',' '],
 				 [' ',' ',' '],
 				 [' ',' ',' ']];
@@ -61,7 +65,10 @@ const gameBoard = (() => {
 		return board;
 	}
 	const resetBoard = () => {
-		board = emptyBoard;
+		// assigning board to empty board will cause both variables to point at the same array
+		board = [[' ',' ',' '],
+				 [' ',' ',' '],
+				 [' ',' ',' ']];
 	}
 	const changeValue = (val, symbol) => {
 		board[val[0]][val[1]] = symbol;
@@ -150,5 +157,4 @@ const displayController = (() => {
 	return { displayBoard, renderBoard, updateGameStatus};
 })();
 
-displayController.renderBoard();
 
