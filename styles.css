@@ -4,4 +4,7 @@ table {
 
 td {
     border: 1px solid #dddddd;
+    width: 5em;
+    height: 5em;
+    padding: 0px;
 }

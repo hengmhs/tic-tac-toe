@@ -29,17 +29,47 @@ const gameController = (() => {
 // Gameboard Module
 
 const gameBoard = (() => {
-	let board = [['1','2','3'],
-			 	 ['4','5','6'],
-			 	 ['7','8','9']]
+	let board = [[' ',' ',' '],
+			 	 [' ',' ',' '],
+			 	 [' ',' ',' ']]
 	const changeValue = (val, symbol) => {
 		board[val[0]][val[1]] = symbol;
 	}
-	const checkGameOver = () => {
-		
+	const isGameOver = () => {
+		let empty = ' ';
+		for(let i = 0; i < 3; i++){
+			// check horizontal
+			// if every element of the row is equal to the first item in the row
+			if(board[i].every((elem) => (elem === board[i][0]) && elem != empty)){
+				return true;
+			}
+
+			// check vertical
+			let column = [];
+			// keep 2nd index constant, change 1st index
+			// e.g. 00, 10, 20 -> column
+			for(let j = 0; j < 3; j++){
+				column.push(board[j][i]);
+			}
+			if(column.every((elem) => (elem === column[0]) && elem != empty)){
+				return true;
+			}
+
+			// check diagonals
+			if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != empty){
+				return true;
+			}
+
+			if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != empty){
+				return true;
+			}
+		}
+			return false;
 	}
-	return { board, changeValue };
+	return { board, changeValue, isGameOver };
 })();
+
+
 
 // displayController Module
 
@@ -53,6 +83,7 @@ const displayController = (() => {
 		gameBoard.changeValue(position, gameController.getCurrent().symbol);
 		gameController.nextTurn();
 		renderBoard();
+		console.log(gameBoard.isGameOver());
 	}
 	const renderBoard = () => {
 		let counter = 0;
